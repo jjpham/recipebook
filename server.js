@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const favicon = require('serve-favicon');
 const logger = require('morgan');
+const cors = require('cors')
 require('dotenv').config(); 
 require('./config/database')
 
@@ -23,7 +24,9 @@ app.use(require('./config/checkToken'))
  app.use('/api/users', require('./routes/api/users'))
  app.use("/api/recipes",require("./routes/api/recipes"))
  app.use("/api/reviews",require("./routes/api/reviews"))
-
+app.use(cors({
+  origin:['http://localhost:3000','https://recipebook-ag0x.onrender.com']
+}))
  app.get('/*', function(req, res) {
     res.sendFile(path.join(__dirname, 'build', 'index.html'));
   });
