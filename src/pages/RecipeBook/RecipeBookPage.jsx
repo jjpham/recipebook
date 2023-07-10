@@ -1,18 +1,31 @@
+import { useState, useEffect } from "react";
+import sendRequest from "../../utilities/send-request";
+import RecipeCard from "../../components/RecipeCard/RecipeCard";
+import './RecipeBookPage.css'
+export default function RecipeBookPage({ user }) {
+  const [allRecipes, setAllRecipes] = useState([]);
 
-import { checkToken } from "../../utilities/users-service"
+  async function fetchAllRecipes() {
+    const returnRcp = await sendRequest("/api/recipes/fetchAll", "GET");
+    setAllRecipes(returnRcp);
+  }
 
-export default function RecipeBookPage(){
+  useEffect(() => {
+    fetchAllRecipes();
+  }, []);
 
-    async function handleCheckToken(){
-        const expDate = await checkToken()
-        console.log(expDate)
-    }
-
-    return(
-        <> 
-            <h1>RecipeBookPage</h1>
-            <button onClick={handleCheckToken}>Check When my Login Expires</button>
-        </>
-
-    )
+  return (
+    <div>
+      <h1>Recipe Book</h1>
+      <div className="recipe-card-grid">
+      {allRecipes && (
+        <div>
+          {allRecipes.map((rcpLoop) => (
+            <RecipeCard key={rcpLoop._id} user={user} rec={rcpLoop} />
+          ))}
+        </div>
+      )}
+      </div>
+    </div>
+  );
 }

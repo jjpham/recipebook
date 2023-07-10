@@ -1,7 +1,7 @@
 const express = require("express")
 const router = express.Router()
-const reviewsCtrr = require("../../controllers/api/reviews")
+const reviewsCtlr = require("../../controllers/api/reviews")
 
-
-
+router.post("/create",reviewsCtlr.create)
+router.get("/fetchRevsforRcp/:recipe_id",reviewsCtlr.returnRevForRcp)
 module.exports = router

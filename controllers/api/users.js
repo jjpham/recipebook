@@ -42,8 +42,27 @@ function createJWT(user){
         {expiresIn:'24h'}
     )
 }
+async function fetchOneUser(req, res) {
+    try {
+      const user = await User.findOne({ username: req.params.username });
+      res.json(user);
+    } catch (err) {
+      console.log("err");
+    }
+  }
+async function fetchById(req, res){
+    try{
+        const user = await User.findOne({_id:req.params.id})
+        res.json(user)
+    } catch(err){
+        res.status(400).json(err)
+        console.log(err)
+    }
+}
 module.exports  = {
     create,
     login,
-    checkToken
+    checkToken,
+    fetchOneUser,
+    fetchById
 }

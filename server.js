@@ -21,7 +21,8 @@ app.use(require('./config/checkToken'))
  const port = process.env.PORT || 3001;
  
  app.use('/api/users', require('./routes/api/users'))
- app.use("/api/recipes",require("./routes/api/receips"))
+ app.use("/api/recipes",require("./routes/api/recipes"))
+ app.use("/api/reviews",require("./routes/api/reviews"))
 
  app.get('/*', function(req, res) {
     res.sendFile(path.join(__dirname, 'build', 'index.html'));

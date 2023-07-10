@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import sendRequest from '../../utilities/send-request'
+import "./RecipeCard.css"
 
 export default function RecipeCard({rec, user, profileName}){
     async function handleDelete(e){
@@ -9,8 +10,9 @@ export default function RecipeCard({rec, user, profileName}){
         window.location.replace(`/profile/${user.username}`)
     }
     return(
-        <Link to = {`/reviews-list/${rec._id}`}>
-            <div>
+        <Link to = {`/recipe-page/${rec._id}`}>
+            
+            <div className='rcpCard'>
                 <h4 style = {{margin:'4%'}}>-{rec.name}-</h4>
                 <p>{rec.description}</p>
                 {profileName === user.username ?

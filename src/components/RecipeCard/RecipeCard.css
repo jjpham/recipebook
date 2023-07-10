@@ -1,0 +1,17 @@
+.rcpCard {
+    margin-top: 2rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(0, 255, 255, 0.2);
+    padding: 2rem;
+    border-radius: 5%;
+    align-items: flex-start;
+    text-align: center;
+    justify-content: center;
+
+  }
+  .rcpCard h4 {
+    margin: 4%;
+    text-align: center;
+  }
