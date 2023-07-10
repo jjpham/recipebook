@@ -28,6 +28,10 @@ Recipe Book
 <img src = "https://i.imgur.com/NDYILz1.png">
 
 ## Getting Started
+deployed link 
+
+https://recipebook-ag0x.onrender.com/
+
 Open the app and start by signing up. From there look to add recipes if not look at the recipe book. In order to contribute you can also add reviews to recipes. 
 
 ## Next Steps
